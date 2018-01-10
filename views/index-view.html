@@ -1,0 +1,45 @@
+<div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+    <!-- <a href="#/matchStatistics" class="btn btn-default" role="button">Match Statistics</a> -->
+        <hr>
+        Search <input type="text" ng-model="search" 
+        placeholder="Search by Round Name" />
+        <br><br>
+        Search <input type="text" ng-model="searchText" 
+        placeholder="SearchBy Team, Year and Score" />
+        <div class="post-preview" ng-repeat="round in myMatches.rounds|filter:search|startFrom:myMatches.currentPage*myMatches.pageSize | limitTo:myMatches.pageSize">
+            <h2 class="post-title">
+                <p>  {{round.name }}</p>
+            </h2>
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <th>Sl No.</th>
+                        <th>Team A</th>
+                        <th>Team B</th>
+                        <th>Score A</th>
+                        <th>Score B</th>
+                        <th>Date</th>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="match in round.matches|filter:searchText">
+                            <td>{{$index+1}}</td>
+                            <td><a ng-href="#/match/{{round.name}}/{{match.team1.name}}" >  {{match.team1.name}}</a></td>
+                            <td><a ng-href="#/match/{{round.name}}/{{match.team2.name}}" >{{match.team2.name}}</a></td>
+                            <td>{{match.score1}}</td>
+                            <td>{{match.score2}}</td>
+                            <td>{{match.date|date:'dd/MMM/yyyy'}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>  
+        </div>
+        <button ng-disabled="myMatches.currentPage == 0" ng-click="myMatches.currentPage=myMatches.currentPage-1">
+            Previous
+        </button>
+            {{myMatches.currentPage+1}}/{{myMatches.numberOfPages()}}
+        <button ng-disabled="myMatches.currentPage >= myMatches.getData().length/myMatches.pageSize - 1" ng-click="myMatches.currentPage=myMatches.currentPage+1">
+            Next
+        </button>
+    </div>
+</div>

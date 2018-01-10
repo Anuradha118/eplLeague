@@ -1,0 +1,28 @@
+<div ng-show="!singleMatch.loadDetails">
+    <strong>Loading...</strong>
+</div>
+<div class="row" ng-init="singleMatch.loadSingleMatch()" ng-show="singleMatch.loadDetails">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <h2>Match Details :</h2>
+                <p><strong>Round Name - </strong> {{singleMatch.roundname}}</p>
+
+                <div class="post-preview">
+                    <p><strong>Team A - </strong> {{singleMatch.singlematch.team1.name}} ({{singleMatch.singlematch.team1.key|uppercase}})</p>
+                    <p><strong>Team B - </strong> {{singleMatch.singlematch.team2.name}} ({{singleMatch.singlematch.team2.key|uppercase}})</p>
+                    <p><strong>Match Played On- </strong> {{singleMatch.singlematch.date|date:'dd/MMM/yyyy'}}</p>
+                    <p><strong>Score A - </strong> {{singleMatch.singlematch.score1}}</p>
+                    <p><strong>Score B - </strong> {{singleMatch.singlematch.score2}}</p>
+                    
+                    <b>{{singleMatch.text}}</b>
+                </div>
+                <hr>
+              
+             
+                <!-- Pager -->
+                <ul class="pager">
+                    <li class="next">
+                        <a href="#/">Back to Home &rarr;</a>
+                    </li>
+                </ul>
+            </div>
+</div>

@@ -1,0 +1,40 @@
+<div class="row" ng-init="matchStatistics.matchSatisticsDetails()">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <h2>League Fixtures</h2>
+        <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <th>Sl No.</th>
+                        <th>Team Name</th>
+                        <th>Matches Played</th>
+                        <th>Matches Won</th>
+                        <th>Matches Draw</th>
+                        <th>Matches Lost</th>
+                        <th>Goals Scored</th>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="team in matchStatistics.teamStatistics|orderBy:'-matchesWon'">
+                            <td>{{$index+1}}</td>
+                            <td>{{team.teamName}}</td>
+                            <td>{{team.matchesPlayed}}</td>
+                            <td>{{team.matchesWon}}</td>
+                            <td>{{team.matchesDraw}}</td>
+                            <td>{{team.matchesLost}}</td>
+                            <td>{{team.goalsScored}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>  
+        <!-- Pager -->
+        <ul class="pager">
+            <li class="next">
+                <a href="#/">Back to Home &rarr;</a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+                
+              
+             
+               
